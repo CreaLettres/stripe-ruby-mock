@@ -36,7 +36,7 @@ module StripeMock
             status: status,
             last_payment_error: last_payment_error,
             next_action: next_action,
-            charges: status == 'succeeded' ? charges_data : empty_charges
+            charges: status == 'succeeded' ? charges_data(params[:amount], params[:currency]) : empty_charges
           )
         )
 
@@ -87,7 +87,7 @@ module StripeMock
         payment_intent = assert_existence :payment_intent, $1, payment_intents[$1]
 
         payment_intent[:status] = 'succeeded'
-        payment_intent[:charges] = charges_data
+        payment_intent[:charges] = charges_data(payment_intent.amount, payment_intent.currency)
         payment_intent
       end
 
@@ -121,9 +121,13 @@ module StripeMock
         params[:amount] && params[:amount] < 1
       end
 
-      def charges_data()
+      def charges_data(amount, currency)
         payment_intent_charge_id = new_id('ch')
-        payment_intent_charge = Data.mock_charge(id: payment_intent_charge_id)
+        payment_intent_charge = Data.mock_charge(
+          id: payment_intent_charge_id,
+          amount: amount,
+          currency: currency
+        )
         charges[payment_intent_charge_id] = payment_intent_charge
         {
           :data => [payment_intent_charge],
