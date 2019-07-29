@@ -87,7 +87,7 @@ module StripeMock
         payment_intent = assert_existence :payment_intent, $1, payment_intents[$1]
 
         payment_intent[:status] = 'succeeded'
-        payment_intent[:charges] = charges_data(payment_intent.amount, payment_intent.currency)
+        payment_intent[:charges] = charges_data(payment_intent[:amount], payment_intent[:currency])
         payment_intent
       end
 
