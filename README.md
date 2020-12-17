@@ -1,3 +1,9 @@
+# epopia-stripe-ruby-mock
+
+This gem is a custom version of stripe-ruby-mock. We needed some PR to be merged, but the upstream was taking too much time to do it. Thus we created this fork, and publish it under the name epopia-stripe-ruby-mock for the time being.
+
+I would recommend NOT using this gem, because it could be deleted at any moment's notice.
+
 # stripe-ruby-mock [![Build Status](https://travis-ci.org/rebelidealist/stripe-ruby-mock.png?branch=master)](https://travis-ci.org/rebelidealist/stripe-ruby-mock) [![Gitter chat](https://badges.gitter.im/rebelidealist/stripe-ruby-mock.png)](https://gitter.im/rebelidealist/stripe-ruby-mock)
 
 * Homepage: https://github.com/rebelidealist/stripe-ruby-mock
